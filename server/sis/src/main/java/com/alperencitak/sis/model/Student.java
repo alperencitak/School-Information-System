@@ -54,7 +54,7 @@ public class Student {
 	private LocalDate enrollment_date;
 	
 	@OneToMany(mappedBy = "student")
-    private Set<Selected_Lesson> selections;
+    private Set<SelectedLesson> selections;
     
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private UserStudent userStudent;
@@ -74,11 +74,11 @@ public class Student {
 		this.userStudent = userStudent;
 	}
 
-	public Set<Selected_Lesson> getSelections() {
+	public Set<SelectedLesson> getSelections() {
 		return selections;
 	}
 
-	public void setSelections(Set<Selected_Lesson> selections) {
+	public void setSelections(Set<SelectedLesson> selections) {
 		this.selections = selections;
 	}
 

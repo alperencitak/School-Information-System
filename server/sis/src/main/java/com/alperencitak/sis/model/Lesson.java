@@ -45,17 +45,17 @@ public class Lesson {
 	private String department;
 	
 	@OneToMany(mappedBy = "lesson")
-    private Set<Selected_Lesson> selections;
+    private Set<SelectedLesson> selections;
     
     @NotNull(message = "Quota cannot be null")
     @Column(name = "quota")
     private Integer quota = 1000;
 
-	public Set<Selected_Lesson> getSelections() {
+	public Set<SelectedLesson> getSelections() {
 		return selections;
 	}
 
-	public void setSelections(Set<Selected_Lesson> selections) {
+	public void setSelections(Set<SelectedLesson> selections) {
 		this.selections = selections;
 	}
 
