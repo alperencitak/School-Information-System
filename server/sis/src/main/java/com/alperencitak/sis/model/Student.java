@@ -3,6 +3,7 @@ package com.alperencitak.sis.model;
 import java.time.LocalDate;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
@@ -53,12 +55,23 @@ public class Student {
 	
 	@OneToMany(mappedBy = "student")
     private Set<Selected_Lesson> selections;
+    
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private UserStudent userStudent;
 	
 	@PrePersist
 	public void prePersist() {
 		if(this.enrollment_date == null) {
 			this.enrollment_date = LocalDate.now();
 		}
+	}
+
+	public UserStudent getUserStudent() {
+		return userStudent;
+	}
+
+	public void setUserStudent(UserStudent userStudent) {
+		this.userStudent = userStudent;
 	}
 
 	public Set<Selected_Lesson> getSelections() {

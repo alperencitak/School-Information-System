@@ -46,6 +46,10 @@ public class Lesson {
 	
 	@OneToMany(mappedBy = "lesson")
     private Set<Selected_Lesson> selections;
+    
+    @NotNull(message = "Quota cannot be null")
+    @Column(name = "quota")
+    private Integer quota = 1000;
 
 	public Set<Selected_Lesson> getSelections() {
 		return selections;
