@@ -1,10 +1,12 @@
 package com.alperencitak.sis.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -38,6 +40,9 @@ public class Instructor {
 	@Size(max = 100, message = "Email cannot exceed 100 characters")
 	@Column(name = "email", unique = true)
 	private String email;
+	
+	@OneToOne(mappedBy = "instructor", cascade = CascadeType.ALL)
+	private UserInstructor userInstructor;
 
 	public Integer getInstructor_id() {
 		return instructor_id;

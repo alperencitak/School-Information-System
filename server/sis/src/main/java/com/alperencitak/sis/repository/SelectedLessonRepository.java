@@ -11,9 +11,7 @@ public interface SelectedLessonRepository extends JpaRepository<SelectedLesson, 
 
 	Optional<SelectedLesson> findById(Integer id);
 	
-	Optional<List<SelectedLesson>> findByStudentId(Integer id);
+	List<SelectedLesson> findByStudentId(Integer id);
 	
-	Optional<List<SelectedLesson>> findByLessonId(Integer id);
-	
-	void deleteById(Integer id);
+	List<SelectedLesson> findByLessonId(Integer id);
 }

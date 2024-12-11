@@ -53,7 +53,7 @@ public class Student {
 	@Column(name = "enrollment_date")
 	private LocalDate enrollment_date;
 	
-	@OneToMany(mappedBy = "student")
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<SelectedLesson> selections;
     
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)

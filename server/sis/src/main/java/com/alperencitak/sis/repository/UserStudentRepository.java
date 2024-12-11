@@ -11,6 +11,5 @@ public interface UserStudentRepository extends JpaRepository<UserStudent, Intege
 	Optional<UserStudent> findById(Integer id);
 	
 	Optional<UserStudent> findByRelatedId(Integer id);
-	
-	void deleteById(Integer id);
+
 }
