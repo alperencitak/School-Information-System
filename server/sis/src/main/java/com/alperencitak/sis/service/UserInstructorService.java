@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.alperencitak.sis.dto.UserInstructorDTO;
 import com.alperencitak.sis.exception.NotFoundException;
 import com.alperencitak.sis.mapper.UserInstructorMapper;
+import com.alperencitak.sis.model.UserInstructor;
 import com.alperencitak.sis.repository.UserInstructorRepository;
 
 @Service
@@ -29,4 +30,13 @@ public class UserInstructorService {
 				.orElseThrow(() -> new NotFoundException("User not found by related id: " + id)));
 	}
 	
+	public void deleteById(Integer id) {
+		userInstructorRepository.deleteById(id);
+	}
+	
+	public UserInstructorDTO save(UserInstructorDTO userInstructorDTO) {
+		UserInstructor userInstructor = userInstructorMapper.toUserInstructor(userInstructorDTO);
+		userInstructorRepository.save(userInstructor);
+		return userInstructorMapper.toUserInstructorDTO(userInstructor);
+	}
 }

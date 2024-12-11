@@ -41,4 +41,8 @@ public class SelectedLessonService {
 				.collect(Collectors.toList());
 	}
 	
+	public void deleteById(Integer id) {
+		selectedLessonRepository.deleteById(id);
+	}
+	
 }

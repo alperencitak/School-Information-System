@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.alperencitak.sis.dto.TranscriptDTO;
 import com.alperencitak.sis.exception.NotFoundException;
 import com.alperencitak.sis.mapper.TranscriptMapper;
+import com.alperencitak.sis.model.Transcript;
 import com.alperencitak.sis.repository.TranscriptRepository;
 
 @Service
@@ -35,6 +36,12 @@ public class TranscriptService {
 	
 	public void deleteById(Integer id) {
 		transcriptRepository.deleteById(id);
+	}
+	
+	public TranscriptDTO save(TranscriptDTO transcriptDTO) {
+		Transcript transcript = transcriptMapper.toTranscript(transcriptDTO);
+		transcriptRepository.save(transcript);
+		return transcriptMapper.toTranscriptDTO(transcript);
 	}
 	
 }

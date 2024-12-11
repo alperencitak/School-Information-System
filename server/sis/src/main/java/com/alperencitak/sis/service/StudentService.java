@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.alperencitak.sis.dto.StudentDTO;
 import com.alperencitak.sis.exception.NotFoundException;
 import com.alperencitak.sis.mapper.StudentMapper;
+import com.alperencitak.sis.model.Student;
 import com.alperencitak.sis.repository.StudentRepository;
 
 @Service
@@ -30,6 +31,12 @@ public class StudentService {
 	
 	public void deleteById(Integer id) {
 		studentRepository.deleteById(id);
+	}
+	
+	public StudentDTO save(StudentDTO studentDTO) {
+		Student student = studentMapper.toStudent(studentDTO);
+		studentRepository.save(student);
+		return studentMapper.toStudentDTO(student);
 	}
 	
 }

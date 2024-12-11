@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.alperencitak.sis.dto.LessonDTO;
 import com.alperencitak.sis.exception.NotFoundException;
 import com.alperencitak.sis.mapper.LessonMapper;
+import com.alperencitak.sis.model.Lesson;
 import com.alperencitak.sis.repository.LessonRepository;
 
 @Service
@@ -30,6 +31,12 @@ public class LessonService {
 	
 	public void deleteById(Integer id) {
 		lessonRepository.deleteById(id);
+	}
+	
+	public LessonDTO save(LessonDTO lessonDTO) {
+		Lesson lesson = lessonMapper.toLesson(lessonDTO);
+		lessonRepository.save(lesson);
+		return lessonMapper.toLessonDTO(lesson);
 	}
 	
 }
