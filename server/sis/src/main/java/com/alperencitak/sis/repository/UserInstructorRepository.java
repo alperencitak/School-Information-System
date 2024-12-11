@@ -12,4 +12,6 @@ public interface UserInstructorRepository extends JpaRepository<UserInstructor, 
 	
 	Optional<UserInstructor> findByRelatedId(Integer id);
 	
+	void deleteById(Integer id);
+	
 }
