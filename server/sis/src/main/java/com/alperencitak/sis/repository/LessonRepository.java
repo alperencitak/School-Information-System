@@ -10,7 +10,7 @@ public interface LessonRepository extends JpaRepository<Lesson, Integer>{
 
 	Optional<Lesson> findById(Integer id);
 	
-	Optional<Lesson> findByLessonCode(Integer code);
+	Optional<Lesson> findByLessonCode(String code);
 	
 	void deleteById(Integer id);
 }

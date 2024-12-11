@@ -19,12 +19,12 @@ public class LessonService {
 		this.lessonMapper = lessonMapper;
 	}
 	
-	public LessonDTO getLessonById(Integer id) {
+	public LessonDTO getById(Integer id) {
 		return lessonMapper.toLessonDTO(lessonRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Lesson not found by id: " + id)));
 	}
 	
-	public LessonDTO getByLessonCode(Integer code) {
+	public LessonDTO getByLessonCode(String code) {
 		return lessonMapper.toLessonDTO(lessonRepository.findByLessonCode(code)
 				.orElseThrow(() -> new NotFoundException("Lesson not found by lesson code: " + code)));
 	}

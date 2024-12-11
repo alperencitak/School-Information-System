@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.alperencitak.sis.dto.SelectedLessonDTO;
 import com.alperencitak.sis.exception.NotFoundException;
 import com.alperencitak.sis.mapper.SelectedLessonMapper;
+import com.alperencitak.sis.model.SelectedLesson;
 import com.alperencitak.sis.repository.SelectedLessonRepository;
 
 @Service
@@ -43,6 +44,12 @@ public class SelectedLessonService {
 	
 	public void deleteById(Integer id) {
 		selectedLessonRepository.deleteById(id);
+	}
+	
+	public SelectedLessonDTO save(SelectedLessonDTO selectedLessonDTO) {
+		SelectedLesson selectedLesson = selectedLessonMapper.toSelectedLesson(selectedLessonDTO);
+		selectedLessonRepository.save(selectedLesson);
+		return selectedLessonMapper.toSelectedLessonDTO(selectedLesson);
 	}
 	
 }
