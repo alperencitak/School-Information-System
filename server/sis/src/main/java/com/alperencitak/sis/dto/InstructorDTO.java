@@ -2,23 +2,23 @@ package com.alperencitak.sis.dto;
 
 public class InstructorDTO {
 
-	private Integer instructor_id;
-	private String full_name;
+	private Integer instructorId;
+	private String fullName;
 	private String title;
 	private String department;
 	private String email;
-	
-	public Integer getInstructor_id() {
-		return instructor_id;
+
+	public Integer getInstructorId() {
+		return instructorId;
 	}
-	public void setInstructor_id(Integer instructor_id) {
-		this.instructor_id = instructor_id;
+	public void setInstructorId(Integer instructorId) {
+		this.instructorId = instructorId;
 	}
-	public String getFull_name() {
-		return full_name;
+	public String getFullName() {
+		return fullName;
 	}
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 	public String getTitle() {
 		return title;
@@ -38,5 +38,5 @@ public class InstructorDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

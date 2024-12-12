@@ -16,40 +16,40 @@ public class SelectedLessonService {
 
 	private final SelectedLessonRepository selectedLessonRepository;
 	private final SelectedLessonMapper selectedLessonMapper;
-	
+
 	public SelectedLessonService(SelectedLessonRepository selectedLessonRepository,
 			SelectedLessonMapper selectedLessonMapper) {
 		this.selectedLessonRepository = selectedLessonRepository;
 		this.selectedLessonMapper = selectedLessonMapper;
 	}
-	
+
 	public SelectedLessonDTO getById(Integer id) {
 		return selectedLessonMapper.toSelectedLessonDTO(selectedLessonRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Selected Lesson not found by id: " + id)));
 	}
-	
+
 	public List<SelectedLessonDTO> getByStudentId(Integer id) {
-		return selectedLessonRepository.findByStudentId(id)
+		return selectedLessonRepository.findByStudent_StudentId(id)
 				.stream()
 				.map(selectedLesson -> selectedLessonMapper.toSelectedLessonDTO(selectedLesson))
 				.collect(Collectors.toList());
 	}
-	
+
 	public List<SelectedLessonDTO> getByLessonId(Integer id) {
-		return selectedLessonRepository.findByLessonId(id)
+		return selectedLessonRepository.findByLesson_LessonId(id)
 				.stream()
 				.map(selectedLesson -> selectedLessonMapper.toSelectedLessonDTO(selectedLesson))
 				.collect(Collectors.toList());
 	}
-	
+
 	public void deleteById(Integer id) {
 		selectedLessonRepository.deleteById(id);
 	}
-	
+
 	public SelectedLessonDTO save(SelectedLessonDTO selectedLessonDTO) {
 		SelectedLesson selectedLesson = selectedLessonMapper.toSelectedLesson(selectedLessonDTO);
 		selectedLessonRepository.save(selectedLesson);
 		return selectedLessonMapper.toSelectedLessonDTO(selectedLesson);
 	}
-	
+
 }

@@ -15,67 +15,67 @@ import jakarta.validation.constraints.Size;
 @Table(name = "transcripts")
 public class Transcript {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "transcript_id")
-	private Integer transcript_id;
-	
-	@ManyToOne
-	@JoinColumn(name = "student_id", nullable = false)
-	private Student student;
-	
-	@ManyToOne
-	@JoinColumn(name = "lesson_id", nullable = false)
-	private Lesson lesson;
-	
-	@NotNull(message = "Grade cannot be null")
-	@Size(max = 2, message = "Grade cannot exceed 2 characters")
-	@Column(name = "grade")
-	private String grade;
-	
-	@NotNull(message = "Semester cannot be null")
-	@Size(max = 20, message = "Semester cannot exceed 20 characters")
-	@Column(name = "semester")
-	private String semester;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "transcript_id")
+    private Integer transcriptId;
 
-	public Integer getTranscript_id() {
-		return transcript_id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 
-	public void setTranscript_id(Integer transcript_id) {
-		this.transcript_id = transcript_id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "lesson_id", nullable = false)
+    private Lesson lesson;
 
-	public Student getStudent() {
-		return student;
-	}
+    @NotNull(message = "Grade cannot be null")
+    @Size(max = 2, message = "Grade cannot exceed 2 characters")
+    @Column(name = "grade")
+    private String grade;
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+    @NotNull(message = "Semester cannot be null")
+    @Size(max = 20, message = "Semester cannot exceed 20 characters")
+    @Column(name = "semester")
+    private String semester;
 
-	public Lesson getLesson() {
-		return lesson;
-	}
+    public Integer getTranscriptId() {
+        return transcriptId;
+    }
 
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
-	}
+    public void setTranscriptId(Integer transcriptId) {
+        this.transcriptId = transcriptId;
+    }
 
-	public String getGrade() {
-		return grade;
-	}
+    public Student getStudent() {
+        return student;
+    }
 
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
-	public String getSemester() {
-		return semester;
-	}
+    public Lesson getLesson() {
+        return lesson;
+    }
 
-	public void setSemester(String semester) {
-		this.semester = semester;
-	}
-	
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
 }

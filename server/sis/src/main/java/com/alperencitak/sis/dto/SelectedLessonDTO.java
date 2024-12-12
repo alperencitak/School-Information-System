@@ -3,30 +3,30 @@ package com.alperencitak.sis.dto;
 import java.time.LocalDate;
 
 public class SelectedLessonDTO {
-	
+
 	private Long selectionId;
-	private Integer student_id;
-	private Integer lesson_id;
+	private Integer studentId;
+	private Integer lessonId;
 	private LocalDate selectionDate;
 	private Boolean isApproved = Boolean.FALSE;
-	
+
 	public Long getSelectionId() {
 		return selectionId;
 	}
 	public void setSelectionId(Long selectionId) {
 		this.selectionId = selectionId;
 	}
-	public Integer getStudent_id() {
-		return student_id;
+	public Integer getStudentId() {
+		return studentId;
 	}
-	public void setStudent_id(Integer student_id) {
-		this.student_id = student_id;
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
-	public Integer getLesson_id() {
-		return lesson_id;
+	public Integer getLessonId() {
+		return lessonId;
 	}
-	public void setLesson_id(Integer lesson_id) {
-		this.lesson_id = lesson_id;
+	public void setLessonId(Integer lessonId) {
+		this.lessonId = lessonId;
 	}
 	public LocalDate getSelectionDate() {
 		return selectionDate;
@@ -40,5 +40,5 @@ public class SelectedLessonDTO {
 	public void setIsApproved(Boolean isApproved) {
 		this.isApproved = isApproved;
 	}
-	
+
 }

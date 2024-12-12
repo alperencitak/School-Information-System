@@ -26,43 +26,43 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "student_id")
-	private Integer student_id;
-	
+	private Integer studentId;
+
 	@NotNull(message = "First name cannot be null.")
 	@Size(max = 50, message = "First name cannot exceed 50 characters")
 	@Column(name = "first_name")
-	private String first_name;
-	
+	private String firstName;
+
 	@NotNull(message = "Last name cannot be null.")
 	@Size(max = 50, message = "Last name cannot exceed 50 characters")
 	@Column(name = "last_name")
-	private String last_name;
-	
+	private String lastName;
+
 	@NotNull(message = "Email cannot be null")
 	@Size(max = 100, message = "Email cannot exceed 100 characters")
 	@Email(message = "Email should be valid")
 	@Column(name = "email", unique = true)
 	private String email;
-	
+
 	@NotNull(message = "Instructor ID cannot be null")
 	@ManyToOne
 	@JoinColumn(name = "instructor_id")
 	private Instructor instructor;
-	
+
 	@NotNull(message = "Enrollment Date cannot be null")
 	@Column(name = "enrollment_date")
-	private LocalDate enrollment_date;
-	
+	private LocalDate enrollmentDate;
+
 	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<SelectedLesson> selections;
-    
+
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private UserStudent userStudent;
-	
+
 	@PrePersist
 	public void prePersist() {
-		if(this.enrollment_date == null) {
-			this.enrollment_date = LocalDate.now();
+		if(this.enrollmentDate == null) {
+			this.enrollmentDate = LocalDate.now();
 		}
 	}
 
@@ -82,30 +82,6 @@ public class Student {
 		this.selections = selections;
 	}
 
-	public Integer getStudent_id() {
-		return student_id;
-	}
-
-	public void setStudent_id(Integer student_id) {
-		this.student_id = student_id;
-	}
-
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -122,12 +98,36 @@ public class Student {
 		this.instructor = instructor;
 	}
 
-	public LocalDate getEnrollment_date() {
-		return enrollment_date;
+	public Integer getStudentId() {
+		return studentId;
 	}
 
-	public void setEnrollment_date(LocalDate enrollment_date) {
-		this.enrollment_date = enrollment_date;
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public LocalDate getEnrollmentDate() {
+		return enrollmentDate;
+	}
+
+	public void setEnrollmentDate(LocalDate enrollmentDate) {
+		this.enrollmentDate = enrollmentDate;
+	}
+
 }

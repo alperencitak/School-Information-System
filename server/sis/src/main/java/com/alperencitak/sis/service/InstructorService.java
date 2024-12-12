@@ -23,7 +23,7 @@ public class InstructorService {
 		return instructorMapper.toInstructorDTO(instructorRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Instructor not found by id: " + id)));
 	}
-	
+
 	public InstructorDTO getByEmail(String email) {
 		return instructorMapper.toInstructorDTO(instructorRepository.findByEmail(email)
 				.orElseThrow(() -> new NotFoundException("Instructor not found by email: " + email)));
@@ -32,11 +32,11 @@ public class InstructorService {
 	public void deleteById(Integer id) {
 		instructorRepository.deleteById(id);
 	}
-	
+
 	public InstructorDTO save(InstructorDTO instructorDTO) {
 		Instructor instructor = instructorMapper.toInstructor(instructorDTO);
 		instructorRepository.save(instructor);
 		return instructorMapper.toInstructorDTO(instructor);
 	}
-	
+
 }

@@ -8,9 +8,11 @@ import com.alperencitak.sis.model.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Integer>{
 
+	@Override
 	Optional<Student> findById(Integer id);
-	
+
 	Optional<Student> findByEmail(String email);
-	
+
+	@Override
 	void deleteById(Integer id);
 }

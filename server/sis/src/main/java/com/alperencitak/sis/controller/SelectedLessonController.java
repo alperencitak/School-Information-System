@@ -23,31 +23,31 @@ public class SelectedLessonController {
 	public SelectedLessonController(SelectedLessonService selectedLessonService) {
 		this.selectedLessonService = selectedLessonService;
 	}
-	
+
 	@GetMapping("/{id}")
 	ResponseEntity<SelectedLessonDTO> getSelectedLessonById(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(selectedLessonService.getById(id));
 	}
-	
+
 	@GetMapping("/student/{id}")
 	ResponseEntity<List<SelectedLessonDTO>> getSelectedLessonByStudentId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(selectedLessonService.getByStudentId(id));
 	}
-	
+
 	@GetMapping("/lesson/{id}")
 	ResponseEntity<List<SelectedLessonDTO>> getSelectedLessonByLessonId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(selectedLessonService.getByLessonId(id));
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<Void> deleteSelectedLessonById(@PathVariable("id") Integer id){
 		selectedLessonService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PostMapping("/add_selectedlesson")
 	ResponseEntity<SelectedLessonDTO> addSelectedLesson(@RequestBody SelectedLessonDTO selectedLessonDTO){
 		return ResponseEntity.ok(selectedLessonService.save(selectedLessonDTO));
 	}
-	
+
 }

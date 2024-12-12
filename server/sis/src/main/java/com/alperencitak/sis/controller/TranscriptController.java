@@ -21,31 +21,31 @@ public class TranscriptController {
 	public TranscriptController(TranscriptService transcriptService) {
 		this.transcriptService = transcriptService;
 	}
-	
+
 	@GetMapping("/{id}")
 	ResponseEntity<TranscriptDTO> getTranscriptById(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(transcriptService.getById(id));
 	}
-	
+
 	@GetMapping("/student/{id}")
 	ResponseEntity<TranscriptDTO> getTranscriptByStudentId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(transcriptService.getByStudentId(id));
 	}
-	
+
 	@GetMapping("/lesson/{id}")
 	ResponseEntity<TranscriptDTO> getTranscriptByLessonId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(transcriptService.getByLessonId(id));
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<Void> deleteTranscriptById(@PathVariable("id") Integer id){
 		transcriptService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PostMapping("/add_transcript")
 	ResponseEntity<TranscriptDTO> addTranscript(@RequestBody TranscriptDTO transcriptDTO){
 		return ResponseEntity.ok(transcriptService.save(transcriptDTO));
 	}
-	
+
 }

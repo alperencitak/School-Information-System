@@ -2,16 +2,16 @@ package com.alperencitak.sis.dto;
 
 public class UserInstructorDTO {
 
-	private Integer user_id;
+	private Integer userId;
 	private String username;
 	private String role;
-	private Integer instructor_id;
-	
-	public Integer getUser_id() {
-		return user_id;
+	private Integer instructorId;
+
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	public String getUsername() {
 		return username;
@@ -25,11 +25,11 @@ public class UserInstructorDTO {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Integer getInstructor_id() {
-		return instructor_id;
+	public Integer getInstructorId() {
+		return instructorId;
 	}
-	public void setInstructor_id(Integer instructor_id) {
-		this.instructor_id = instructor_id;
+	public void setInstructorId(Integer instructorId) {
+		this.instructorId = instructorId;
 	}
-	
+
 }

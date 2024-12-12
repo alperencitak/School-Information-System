@@ -9,12 +9,14 @@ import com.alperencitak.sis.model.SelectedLesson;
 
 public interface SelectedLessonRepository extends JpaRepository<SelectedLesson, Integer> {
 
+	@Override
 	Optional<SelectedLesson> findById(Integer id);
 
-	List<SelectedLesson> findByStudentId(Integer id);
+	List<SelectedLesson> findByStudent_StudentId(Integer id);
 
-	List<SelectedLesson> findByLessonId(Integer id);
-	
+	List<SelectedLesson> findByLesson_LessonId(Integer id);
+
+	@Override
 	void deleteById(Integer id);
-	
+
 }

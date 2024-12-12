@@ -1,33 +1,48 @@
 package com.alperencitak.sis.dto;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class StudentDTO {
 
-	private Integer student_id;
-    private String first_name;
-    private String last_name;
+	private Integer studentId;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String instructor_id;
-    private LocalDate enrollment_date;
-    
-	public Integer getStudent_id() {
-		return student_id;
+    private String instructorId;
+    private LocalDate enrollmentDate;
+    private Set<SelectedLessonDTO> selections;
+    private UserStudentDTO userStudent;
+
+	public Integer getStudentId() {
+		return studentId;
 	}
-	public void setStudent_id(Integer student_id) {
-		this.student_id = student_id;
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public Set<SelectedLessonDTO> getSelections() {
+		return selections;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setSelections(Set<SelectedLessonDTO> selections) {
+		this.selections = selections;
 	}
-	public String getLast_name() {
-		return last_name;
+	public UserStudentDTO getUserStudent() {
+		return userStudent;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setUserStudent(UserStudentDTO userStudent) {
+		this.userStudent = userStudent;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -35,17 +50,17 @@ public class StudentDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getInstructor_id() {
-		return instructor_id;
+	public String getInstructorId() {
+		return instructorId;
 	}
-	public void setInstructor_id(String instructor_id) {
-		this.instructor_id = instructor_id;
+	public void setInstructorId(String instructorId) {
+		this.instructorId = instructorId;
 	}
-	public LocalDate getEnrollment_date() {
-		return enrollment_date;
+	public LocalDate getEnrollmentDate() {
+		return enrollmentDate;
 	}
-	public void setEnrollment_date(LocalDate enrollment_date) {
-		this.enrollment_date = enrollment_date;
+	public void setEnrollmentDate(LocalDate enrollmentDate) {
+		this.enrollmentDate = enrollmentDate;
 	}
-    
+
 }

@@ -4,38 +4,38 @@ import java.util.Set;
 
 public class LessonDTO {
 
-	private Integer lesson_id;
-	private String lesson_code;
-	private String lesson_name;
-	private Boolean is_mandatory;
+	private Integer lessonId;
+	private String lessonCode;
+	private String lessonName;
+	private Boolean isMandatory;
 	private Integer credit;
 	private String department;
     private Set<SelectedLessonDTO> selections;
     private Integer quota;
-    
-	public Integer getLesson_id() {
-		return lesson_id;
+
+	public Integer getLessonId() {
+		return lessonId;
 	}
-	public void setLesson_id(Integer lesson_id) {
-		this.lesson_id = lesson_id;
+	public void setLessonId(Integer lessonId) {
+		this.lessonId = lessonId;
 	}
-	public String getLesson_code() {
-		return lesson_code;
+	public String getLessonCode() {
+		return lessonCode;
 	}
-	public void setLesson_code(String lesson_code) {
-		this.lesson_code = lesson_code;
+	public void setLessonCode(String lessonCode) {
+		this.lessonCode = lessonCode;
 	}
-	public String getLesson_name() {
-		return lesson_name;
+	public String getLessonName() {
+		return lessonName;
 	}
-	public void setLesson_name(String lesson_name) {
-		this.lesson_name = lesson_name;
+	public void setLessonName(String lessonName) {
+		this.lessonName = lessonName;
 	}
-	public Boolean getIs_mandatory() {
-		return is_mandatory;
+	public Boolean getIsMandatory() {
+		return isMandatory;
 	}
-	public void setIs_mandatory(Boolean is_mandatory) {
-		this.is_mandatory = is_mandatory;
+	public void setIsMandatory(Boolean isMandatory) {
+		this.isMandatory = isMandatory;
 	}
 	public Integer getCredit() {
 		return credit;
@@ -61,5 +61,5 @@ public class LessonDTO {
 	public void setQuota(Integer quota) {
 		this.quota = quota;
 	}
-    
+
 }

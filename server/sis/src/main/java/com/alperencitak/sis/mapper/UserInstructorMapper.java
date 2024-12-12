@@ -5,14 +5,20 @@ import org.mapstruct.Mapping;
 
 import com.alperencitak.sis.dto.UserInstructorDTO;
 import com.alperencitak.sis.model.UserInstructor;
+import com.alperencitak.sis.request.CreateUserInstructorRequest;
 
 @Mapper(componentModel = "spring")
 public interface UserInstructorMapper {
 
-	@Mapping(source = "instructor.instructor_id", target = "instructor_id")
+	@Mapping(source = "instructor.instructorId", target = "instructorId")
 	UserInstructorDTO toUserInstructorDTO(UserInstructor userInstructor);
-	
-	@Mapping(source = "instructor_id", target = "instructor.instructor_id")
+
+	@Mapping(source = "instructorId", target = "instructor.instructorId")
+	@Mapping(target = "passwordHash", ignore = true)
 	UserInstructor toUserInstructor(UserInstructorDTO userInstructorDTO);
+
+	@Mapping(target = "userId", ignore = true)
+    @Mapping(source = "instructorId",target = "instructor.instructorId")
+	UserInstructor toCreateUserInstructor(CreateUserInstructorRequest request);
 	
 }

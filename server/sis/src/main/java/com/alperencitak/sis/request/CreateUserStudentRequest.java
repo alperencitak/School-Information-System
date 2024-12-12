@@ -3,21 +3,21 @@ package com.alperencitak.sis.request;
 public class CreateUserStudentRequest {
 
 	private String username;
-    private String password_hash;
+    private String passwordHash;
     private String role;
-    private Integer instructor_id;
-    
+    private Integer studentId;
+
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword_hash() {
-		return password_hash;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
-	public void setPassword_hash(String password_hash) {
-		this.password_hash = password_hash;
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 	public String getRole() {
 		return role;
@@ -25,11 +25,11 @@ public class CreateUserStudentRequest {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Integer getInstructor_id() {
-		return instructor_id;
+	public Integer getStudentId() {
+		return studentId;
 	}
-	public void setInstructor_id(Integer instructor_id) {
-		this.instructor_id = instructor_id;
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
-    
+	
 }

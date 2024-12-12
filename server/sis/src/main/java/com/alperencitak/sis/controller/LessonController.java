@@ -21,26 +21,26 @@ public class LessonController {
 	public LessonController(LessonService lessonService) {
 		this.lessonService = lessonService;
 	}
-	
+
 	@GetMapping("/{id}")
 	ResponseEntity<LessonDTO> getLessonById(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(lessonService.getById(id));
 	}
-	
+
 	@GetMapping("/code/{code}")
 	ResponseEntity<LessonDTO> getLessonByCode(@PathVariable("code") String code){
 		return ResponseEntity.ok(lessonService.getByLessonCode(code));
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<Void> deleteLessonById(@PathVariable("id") Integer id){
 		lessonService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PostMapping("/add_lesson")
 	ResponseEntity<LessonDTO> addLesson(@RequestBody LessonDTO lessonDTO){
 		return ResponseEntity.ok(lessonService.save(lessonDTO));
 	}
-	
+
 }

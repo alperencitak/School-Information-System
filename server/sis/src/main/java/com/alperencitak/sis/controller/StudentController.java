@@ -21,26 +21,26 @@ public class StudentController {
 	public StudentController(StudentService studentService) {
 		this.studentService = studentService;
 	}
-	
+
 	@GetMapping("/{id}")
 	ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(studentService.getById(id));
 	}
-	
+
 	@GetMapping("/email/{email}")
 	ResponseEntity<StudentDTO> getStudentByEmail(@PathVariable("email") String email){
 		return ResponseEntity.ok(studentService.getByEmail(email));
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<Void> deleteStudentById(@PathVariable("id") Integer id){
 		studentService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PostMapping("/add_student")
 	ResponseEntity<StudentDTO> addStudent(@RequestBody StudentDTO studentDTO){
 		return ResponseEntity.ok(studentService.save(studentDTO));
 	}
-	
+
 }

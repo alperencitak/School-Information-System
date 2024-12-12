@@ -7,9 +7,9 @@ import com.alperencitak.sis.model.Instructor;
 
 @Mapper(componentModel = "spring")
 public interface InstructorMapper {
-	
+
 	InstructorDTO toInstructorDTO(Instructor instructor);
 
 	Instructor toInstructor(InstructorDTO instructorDTO);
-	
+
 }

@@ -2,29 +2,29 @@ package com.alperencitak.sis.dto;
 
 public class TranscriptDTO {
 
-	private Integer transcript_id;
-	private Integer student_id;
-	private Integer lesson_id;
+	private Integer transcriptId;
+	private Integer studentId;
+	private Integer lessonId;
 	private String grade;
 	private String semester;
-	
-	public Integer getTranscript_id() {
-		return transcript_id;
+
+	public Integer getTranscriptId() {
+		return transcriptId;
 	}
-	public void setTranscript_id(Integer transcript_id) {
-		this.transcript_id = transcript_id;
+	public void setTranscriptId(Integer transcriptId) {
+		this.transcriptId = transcriptId;
 	}
-	public Integer getStudent_id() {
-		return student_id;
+	public Integer getStudentId() {
+		return studentId;
 	}
-	public void setStudent_id(Integer student_id) {
-		this.student_id = student_id;
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
-	public Integer getLesson_id() {
-		return lesson_id;
+	public Integer getLessonId() {
+		return lessonId;
 	}
-	public void setLesson_id(Integer lesson_id) {
-		this.lesson_id = lesson_id;
+	public void setLessonId(Integer lessonId) {
+		this.lessonId = lessonId;
 	}
 	public String getGrade() {
 		return grade;
@@ -38,5 +38,5 @@ public class TranscriptDTO {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
-	
+
 }

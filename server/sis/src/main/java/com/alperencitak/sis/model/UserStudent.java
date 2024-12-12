@@ -16,68 +16,68 @@ import jakarta.validation.constraints.Size;
 @Table(name = "user_students")
 public class UserStudent {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private Integer user_id;
-	
-	@NotNull(message = "Username cannot be null")
-	@Size(max = 100, message = "Username cannot exceed 100 characters")
-	@Column(name = "username")
-	private String username;
-	
-	@NotNull(message = "Password hash cannot be null")
-	@Size(max = 255, message = "Password hash cannot exceed 255 characters")
-	@Column(name = "password_hash")
-	private String password_hash;
-	
-	@NotNull(message = "Role cannot be null")
-	@Size(max = 50, message = "Role cannot exceed 50 characters")
-	@Column(name = "role")
-	private String role;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "related_id", referencedColumnName = "student_id")
-	private Student student;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Integer userId;
 
-	public Integer getUser_id() {
-		return user_id;
-	}
+    @NotNull(message = "Username cannot be null")
+    @Size(max = 100, message = "Username cannot exceed 100 characters")
+    @Column(name = "username")
+    private String username;
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
-	}
+    @NotNull(message = "Password hash cannot be null")
+    @Size(max = 255, message = "Password hash cannot exceed 255 characters")
+    @Column(name = "password_hash")
+    private String passwordHash;
 
-	public String getUsername() {
-		return username;
-	}
+    @NotNull(message = "Role cannot be null")
+    @Size(max = 50, message = "Role cannot exceed 50 characters")
+    @Column(name = "role")
+    private String role;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "related_id", referencedColumnName = "student_id")
+    private Student student;
 
-	public String getPassword_hash() {
-		return password_hash;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setPassword_hash(String password_hash) {
-		this.password_hash = password_hash;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public Student getStudent() {
-		return student;
-	}
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-	
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
 }

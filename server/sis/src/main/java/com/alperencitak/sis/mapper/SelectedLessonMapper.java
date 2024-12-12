@@ -9,12 +9,18 @@ import com.alperencitak.sis.model.SelectedLesson;
 @Mapper(componentModel = "spring")
 public interface SelectedLessonMapper {
 
-	@Mapping(source = "student.student_id", target = "student_id")
-	@Mapping(source = "instructor.instructor_id", target = "instructor_id")
-	SelectedLessonDTO toSelectedLessonDTO(SelectedLesson selectedLesson);
-	
-	@Mapping(source = "student_id", target = "student.student_id")
-	@Mapping(source = "instructor_id", target = "instructor.instructor_id")
-	SelectedLesson toSelectedLesson(SelectedLessonDTO selectedLessonDTO);
-	
+	@Mapping(source = "student.studentId", target = "studentId")
+    @Mapping(source = "lesson.lessonId", target = "lessonId")
+    @Mapping(source = "selectionDate", target = "selectionDate")
+    @Mapping(source = "isApproved", target = "isApproved")
+    @Mapping(source = "selectionId", target = "selectionId")
+    SelectedLessonDTO toSelectedLessonDTO(SelectedLesson selectedLesson);
+
+    @Mapping(source = "studentId", target = "student.studentId")
+    @Mapping(source = "lessonId", target = "lesson.lessonId")
+    @Mapping(source = "selectionDate", target = "selectionDate")
+    @Mapping(source = "isApproved", target = "isApproved")
+    @Mapping(source = "selectionId", target = "selectionId")
+    SelectedLesson toSelectedLesson(SelectedLessonDTO selectedLessonDTO);
+
 }

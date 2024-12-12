@@ -13,12 +13,12 @@ public class StudentService {
 
 	private final StudentRepository studentRepository;
 	private final StudentMapper studentMapper;
-	
+
 	public StudentService(StudentRepository studentRepository, StudentMapper studentMapper) {
 		this.studentRepository = studentRepository;
 		this.studentMapper = studentMapper;
 	}
-	
+
 	public StudentDTO getById(Integer id) {
 		return studentMapper.toStudentDTO(studentRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Student not found by id: " + id)));
@@ -28,15 +28,15 @@ public class StudentService {
 		return studentMapper.toStudentDTO(studentRepository.findByEmail(email)
 				.orElseThrow(() -> new NotFoundException("Student not found by email: " + email)));
 	}
-	
+
 	public void deleteById(Integer id) {
 		studentRepository.deleteById(id);
 	}
-	
+
 	public StudentDTO save(StudentDTO studentDTO) {
 		Student student = studentMapper.toStudent(studentDTO);
 		studentRepository.save(student);
 		return studentMapper.toStudentDTO(student);
 	}
-	
+
 }

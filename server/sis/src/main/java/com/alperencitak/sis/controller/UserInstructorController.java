@@ -9,37 +9,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alperencitak.sis.dto.UserInstructorDTO;
+import com.alperencitak.sis.request.CreateUserInstructorRequest;
 import com.alperencitak.sis.service.UserInstructorService;
 
 @RestController
 @RequestMapping("/user_instructor")
 public class UserInstructorController {
-	
+
 	private final UserInstructorService userInstructorService;
 
 	public UserInstructorController(UserInstructorService userInstructorService) {
 		this.userInstructorService = userInstructorService;
 	}
-	
+
 	@GetMapping("/{id}")
 	ResponseEntity<UserInstructorDTO> getUserInstructorById(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(userInstructorService.getById(id));
 	}
-	
+
 	@GetMapping("/instructor/{id}")
 	ResponseEntity<UserInstructorDTO> getUserInstructorByInstructorId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(userInstructorService.getByInstructorId(id));
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<Void> deleteInstructorById(@PathVariable("id") Integer id){
 		userInstructorService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PostMapping("/add_user_instructor")
-	ResponseEntity<UserInstructorDTO> addUserInstructor(UserInstructorDTO userInstructorDTO){
-		return ResponseEntity.ok(userInstructorService.save(userInstructorDTO));
+	ResponseEntity<UserInstructorDTO> addUserInstructor(CreateUserInstructorRequest createUserInstructorRequest){
+		return ResponseEntity.ok(userInstructorService.save(createUserInstructorRequest));
 	}
-	
+
 }

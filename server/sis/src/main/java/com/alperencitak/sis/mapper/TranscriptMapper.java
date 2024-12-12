@@ -9,12 +9,12 @@ import com.alperencitak.sis.model.Transcript;
 @Mapper(componentModel = "spring")
 public interface TranscriptMapper {
 
-	@Mapping(source = "student.student_id", target = "student_id")
-	@Mapping(source = "lesson.lesson_id", target = "lesson_id")
+	@Mapping(source = "student.studentId", target = "studentId")
+	@Mapping(source = "lesson.lessonId", target = "lessonId")
 	TranscriptDTO toTranscriptDTO(Transcript transcript);
-	
-	@Mapping(source = "student_id", target = "student.student_id")
-	@Mapping(source = "lesson_id", target = "lesson.lesson_id")
+
+	@Mapping(source = "studentId", target = "student.studentId")
+	@Mapping(source = "lessonId", target = "lesson.lessonId")
 	Transcript toTranscript(TranscriptDTO transcriptDTO);
-	
+
 }

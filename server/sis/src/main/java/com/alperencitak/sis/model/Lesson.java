@@ -16,95 +16,102 @@ import jakarta.validation.constraints.Size;
 @Table(name = "lessons")
 public class Lesson {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "lesson_id")
-	private Integer lesson_id;
-	
-	@NotNull(message = "Lesson code cannot be null")
-	@Size(max = 20, message = "Lesson code cannot exceed 20 characters")
-	@Column(name = "lesson_code", unique = true)
-	private String lesson_code;
-	
-	@NotNull(message = "Lesson name cannot be null")
-	@Size(max = 100, message = "Lesson name cannot exceed 100 characters")
-	@Column(name = "lesson_name")
-	private String lesson_name;
-	
-	@NotNull(message = "Lesson requirement cannot be null")
-	@Column(name = "is_mandatory")
-	private Boolean is_mandatory;
-	
-	@NotNull(message = "Credit cannot be null")
-	@Column(name = "credit")
-	private Integer credit;
-	
-	@NotNull(message = "Department cannot be null")
-	@Size(max = 100, message = "Department cannot exceed 100 characters")
-	@Column(name = "department")
-	private String department;
-	
-	@OneToMany(mappedBy = "lesson")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lesson_id")
+    private Integer lessonId;
+
+    @NotNull(message = "Lesson code cannot be null")
+    @Size(max = 20, message = "Lesson code cannot exceed 20 characters")
+    @Column(name = "lesson_code", unique = true)
+    private String lessonCode;
+
+    @NotNull(message = "Lesson name cannot be null")
+    @Size(max = 100, message = "Lesson name cannot exceed 100 characters")
+    @Column(name = "lesson_name")
+    private String lessonName;
+
+    @NotNull(message = "Lesson requirement cannot be null")
+    @Column(name = "is_mandatory")
+    private Boolean isMandatory;
+
+    @NotNull(message = "Credit cannot be null")
+    @Column(name = "credit")
+    private Integer credit;
+
+    @NotNull(message = "Department cannot be null")
+    @Size(max = 100, message = "Department cannot exceed 100 characters")
+    @Column(name = "department")
+    private String department;
+
+    @OneToMany(mappedBy = "lesson")
     private Set<SelectedLesson> selections;
-    
+
     @NotNull(message = "Quota cannot be null")
     @Column(name = "quota")
     private Integer quota = 1000;
 
-	public Set<SelectedLesson> getSelections() {
-		return selections;
-	}
+    public Set<SelectedLesson> getSelections() {
+        return selections;
+    }
 
-	public void setSelections(Set<SelectedLesson> selections) {
-		this.selections = selections;
-	}
+    public void setSelections(Set<SelectedLesson> selections) {
+        this.selections = selections;
+    }
 
-	public Integer getLesson_id() {
-		return lesson_id;
-	}
+    public Integer getQuota() {
+        return quota;
+    }
 
-	public void setLesson_id(Integer lesson_id) {
-		this.lesson_id = lesson_id;
-	}
+    public void setQuota(Integer quota) {
+        this.quota = quota;
+    }
 
-	public String getLesson_code() {
-		return lesson_code;
-	}
+    public Integer getLessonId() {
+        return lessonId;
+    }
 
-	public void setLesson_code(String lesson_code) {
-		this.lesson_code = lesson_code;
-	}
+    public void setLessonId(Integer lessonId) {
+        this.lessonId = lessonId;
+    }
 
-	public String getLesson_name() {
-		return lesson_name;
-	}
+    public String getLessonCode() {
+        return lessonCode;
+    }
 
-	public void setLesson_name(String lesson_name) {
-		this.lesson_name = lesson_name;
-	}
+    public void setLessonCode(String lessonCode) {
+        this.lessonCode = lessonCode;
+    }
 
-	public Boolean getIs_mandatory() {
-		return is_mandatory;
-	}
+    public String getLessonName() {
+        return lessonName;
+    }
 
-	public void setIs_mandatory(Boolean is_mandatory) {
-		this.is_mandatory = is_mandatory;
-	}
+    public void setLessonName(String lessonName) {
+        this.lessonName = lessonName;
+    }
 
-	public Integer getCredit() {
-		return credit;
-	}
+    public Boolean getIsMandatory() {
+        return isMandatory;
+    }
 
-	public void setCredit(Integer credit) {
-		this.credit = credit;
-	}
+    public void setIsMandatory(Boolean isMandatory) {
+        this.isMandatory = isMandatory;
+    }
 
-	public String getDepartment() {
-		return department;
-	}
+    public Integer getCredit() {
+        return credit;
+    }
 
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-	
+    public void setCredit(Integer credit) {
+        this.credit = credit;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 }

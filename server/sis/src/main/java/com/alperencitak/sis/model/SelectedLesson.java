@@ -15,8 +15,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "student_lesson_selections")
 public class SelectedLesson {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "selection_id")
     private Long selectionId;
@@ -34,11 +34,52 @@ public class SelectedLesson {
 
     @Column(name = "is_approved", nullable = false)
     private Boolean isApproved = Boolean.FALSE;
-    
+
     @PrePersist
     public void prePersist() {
-		if(this.selectionDate == null) {
-			this.selectionDate = LocalDate.now();
-		}
-	}
+        if(this.selectionDate == null) {
+            this.selectionDate = LocalDate.now();
+        }
+    }
+
+    public Long getSelectionId() {
+        return selectionId;
+    }
+
+    public void setSelectionId(Long selectionId) {
+        this.selectionId = selectionId;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
+    public LocalDate getSelectionDate() {
+        return selectionDate;
+    }
+
+    public void setSelectionDate(LocalDate selectionDate) {
+        this.selectionDate = selectionDate;
+    }
+
+    public Boolean getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(Boolean isApproved) {
+        this.isApproved = isApproved;
+    }
+
 }
