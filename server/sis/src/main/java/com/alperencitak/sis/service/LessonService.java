@@ -8,6 +8,8 @@ import com.alperencitak.sis.mapper.LessonMapper;
 import com.alperencitak.sis.model.Lesson;
 import com.alperencitak.sis.repository.LessonRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class LessonService {
 
@@ -24,8 +26,9 @@ public class LessonService {
 				.orElseThrow(() -> new NotFoundException("Lesson not found by id: " + id)));
 	}
 
+	@Transactional
 	public LessonDTO getByLessonCode(String code) {
-		return lessonMapper.toLessonDTO(lessonRepository.findByLessonCode(code)
+		return lessonMapper.toLessonDTO(lessonRepository.findLessonByLessonCode(code)
 				.orElseThrow(() -> new NotFoundException("Lesson not found by lesson code: " + code)));
 	}
 

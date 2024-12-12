@@ -14,7 +14,7 @@ public interface LessonRepository extends JpaRepository<Lesson, Integer>{
 	Optional<Lesson> findById(Integer id);
 
 	@Procedure(name = "GetLessonByLessonCode")
-	Optional<Lesson> findByLessonCode(@Param("in_lesson_code") String lesson_code);
+	Optional<Lesson> findLessonByLessonCode(@Param("in_lesson_code") String lesson_code);
 
 	@Override
 	void deleteById(Integer id);
