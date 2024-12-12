@@ -15,7 +15,7 @@ import com.alperencitak.sis.dto.SelectedLessonDTO;
 import com.alperencitak.sis.service.SelectedLessonService;
 
 @RestController
-@RequestMapping("/selectedlesson")
+@RequestMapping("/selectedlessons")
 public class SelectedLessonController {
 
 	private final SelectedLessonService selectedLessonService;
@@ -45,7 +45,7 @@ public class SelectedLessonController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PostMapping("/add_selectedlesson")
+	@PostMapping("/save_selectedlesson")
 	ResponseEntity<SelectedLessonDTO> addSelectedLesson(@RequestBody SelectedLessonDTO selectedLessonDTO){
 		return ResponseEntity.ok(selectedLessonService.save(selectedLessonDTO));
 	}

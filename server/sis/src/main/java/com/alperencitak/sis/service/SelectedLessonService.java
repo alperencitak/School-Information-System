@@ -48,6 +48,9 @@ public class SelectedLessonService {
 
 	public SelectedLessonDTO save(SelectedLessonDTO selectedLessonDTO) {
 		SelectedLesson selectedLesson = selectedLessonMapper.toSelectedLesson(selectedLessonDTO);
+		if(selectedLessonDTO.getSelectionId() != null) {
+			selectedLesson.setSelectionId(selectedLessonDTO.getSelectionId());
+		}
 		selectedLessonRepository.save(selectedLesson);
 		return selectedLessonMapper.toSelectedLessonDTO(selectedLesson);
 	}

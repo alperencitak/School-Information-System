@@ -19,7 +19,7 @@ public class SelectedLesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "selection_id")
-    private Long selectionId;
+    private Integer selectionId;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
@@ -42,11 +42,11 @@ public class SelectedLesson {
         }
     }
 
-    public Long getSelectionId() {
+    public Integer getSelectionId() {
         return selectionId;
     }
 
-    public void setSelectionId(Long selectionId) {
+    public void setSelectionId(Integer selectionId) {
         this.selectionId = selectionId;
     }
 

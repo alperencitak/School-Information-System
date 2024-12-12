@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class SelectedLessonDTO {
 
-	private Long selectionId;
+	private Integer selectionId;
 	private Integer studentId;
 	private Integer lessonId;
 	private LocalDate selectionDate;
 	private Boolean isApproved = Boolean.FALSE;
 
-	public Long getSelectionId() {
+	public Integer getSelectionId() {
 		return selectionId;
 	}
-	public void setSelectionId(Long selectionId) {
+	public void setSelectionId(Integer selectionId) {
 		this.selectionId = selectionId;
 	}
 	public Integer getStudentId() {
