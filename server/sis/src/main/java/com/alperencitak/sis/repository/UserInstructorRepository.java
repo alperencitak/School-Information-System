@@ -12,7 +12,9 @@ public interface UserInstructorRepository extends JpaRepository<UserInstructor, 
 	Optional<UserInstructor> findById(Integer id);
 
 	Optional<UserInstructor> findByInstructor_InstructorId(Integer id);
-
+	
+	Optional<UserInstructor> findByUsername(String username);
+	
 	@Override
 	void deleteById(Integer id);
 

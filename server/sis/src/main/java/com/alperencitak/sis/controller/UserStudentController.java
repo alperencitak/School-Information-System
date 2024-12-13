@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alperencitak.sis.dto.UserStudentDTO;
 import com.alperencitak.sis.request.CreateUserStudentRequest;
+import com.alperencitak.sis.request.UserLoginRequest;
 import com.alperencitak.sis.service.UserStudentService;
 
 @RestController
@@ -39,8 +40,13 @@ public class UserStudentController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PostMapping("/add_user_student")
-	ResponseEntity<UserStudentDTO> addUserStudent(@RequestBody CreateUserStudentRequest createUserStudentRequest){
+	@PostMapping("/login")
+	ResponseEntity<UserStudentDTO> login(@RequestBody UserLoginRequest userLoginRequest) {
+		return ResponseEntity.ok(userStudentService.validateUser(userLoginRequest.getUsername(), userLoginRequest.getPassword()));
+	}
+	
+	@PostMapping("/register")
+	ResponseEntity<UserStudentDTO> register(@RequestBody CreateUserStudentRequest createUserStudentRequest){
 		return ResponseEntity.ok(userStudentService.save(createUserStudentRequest));
 	}
 

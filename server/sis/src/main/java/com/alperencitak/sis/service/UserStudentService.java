@@ -1,5 +1,6 @@
 package com.alperencitak.sis.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.alperencitak.sis.dto.UserStudentDTO;
@@ -14,11 +15,14 @@ public class UserStudentService {
 
 	private final UserStudentRepository userStudentRepository;
 	private final UserStudentMapper userStudentMapper;
+	private final PasswordEncoder passwordEncoder;
 
 	public UserStudentService(UserStudentRepository userStudentRepository,
-			UserStudentMapper userStudentMapper) {
+			UserStudentMapper userStudentMapper,
+			PasswordEncoder passwordEncoder) {
 		this.userStudentRepository = userStudentRepository;
 		this.userStudentMapper = userStudentMapper;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	public UserStudentDTO getById(Integer id) {
@@ -37,8 +41,17 @@ public class UserStudentService {
 
 	public UserStudentDTO save(CreateUserStudentRequest createUserStudentRequest) {
 		UserStudent userStudent = userStudentMapper.toCreateUserStudentRequest(createUserStudentRequest);
-		userStudentRepository.save(userStudent);
-		return userStudentMapper.toUserStudentDTO(userStudent);
+		String encodePassword = passwordEncoder.encode(createUserStudentRequest.getPassword());
+		userStudent.setPasswordHash(encodePassword);
+		return userStudentMapper.toUserStudentDTO(userStudentRepository.save(userStudent));
+	}
+	
+	public UserStudentDTO validateUser(String username, String password) {
+		UserStudent userStudent = userStudentRepository.findByUsername(username).orElseThrow(() -> new NotFoundException("Username not found: " + username));
+		if(passwordEncoder.matches(password, userStudent.getPasswordHash())) {
+			return userStudentMapper.toUserStudentDTO(userStudent);
+		}
+		return null;
 	}
 
 }

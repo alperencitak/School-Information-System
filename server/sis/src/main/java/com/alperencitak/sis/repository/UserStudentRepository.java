@@ -13,6 +13,8 @@ public interface UserStudentRepository extends JpaRepository<UserStudent, Intege
 
 	Optional<UserStudent> findByStudent_StudentId(Integer id);
 
+	Optional<UserStudent> findByUsername(String username);
+	
 	@Override
 	void deleteById(Integer id);
 

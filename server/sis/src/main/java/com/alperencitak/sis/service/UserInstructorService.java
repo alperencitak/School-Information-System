@@ -1,5 +1,6 @@
 package com.alperencitak.sis.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.alperencitak.sis.dto.UserInstructorDTO;
@@ -14,11 +15,14 @@ public class UserInstructorService {
 
 	private final UserInstructorRepository userInstructorRepository;
 	private final UserInstructorMapper userInstructorMapper;
+	private final PasswordEncoder passwordEncoder;
 
 	public UserInstructorService(UserInstructorRepository userInstructorRepository,
-			UserInstructorMapper userInstructorMapper) {
+			UserInstructorMapper userInstructorMapper,
+			PasswordEncoder passwordEncoder) {
 		this.userInstructorRepository = userInstructorRepository;
 		this.userInstructorMapper = userInstructorMapper;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	public UserInstructorDTO getById(Integer id) {
@@ -37,7 +41,16 @@ public class UserInstructorService {
 
 	public UserInstructorDTO save(CreateUserInstructorRequest createUserInstructorRequest) {
 		UserInstructor userInstructor = userInstructorMapper.toCreateUserInstructor(createUserInstructorRequest);
-		userInstructorRepository.save(userInstructor);
-		return userInstructorMapper.toUserInstructorDTO(userInstructor);
+		String encodePassword = passwordEncoder.encode(createUserInstructorRequest.getPassword());
+		userInstructor.setPasswordHash(encodePassword);
+		return userInstructorMapper.toUserInstructorDTO(userInstructorRepository.save(userInstructor));
+	}
+	
+	public UserInstructorDTO validateUser(String username, String password) {
+		UserInstructor userInstructor = userInstructorRepository.findByUsername(username).orElseThrow(() -> new NotFoundException("Username not found: " + username));
+		if(passwordEncoder.matches(password, userInstructor.getPasswordHash())) {
+			return userInstructorMapper.toUserInstructorDTO(userInstructor);
+		}
+		return null;
 	}
 }

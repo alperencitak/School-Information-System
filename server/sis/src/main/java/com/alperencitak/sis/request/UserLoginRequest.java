@@ -1,12 +1,9 @@
 package com.alperencitak.sis.request;
 
-public class CreateUserStudentRequest {
-
+public class UserLoginRequest {
+	
 	private String username;
     private String password;
-    private String role;
-    private Integer studentId;
-
 	public String getUsername() {
 		return username;
 	}
@@ -19,17 +16,5 @@ public class CreateUserStudentRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-	public Integer getStudentId() {
-		return studentId;
-	}
-	public void setStudentId(Integer studentId) {
-		this.studentId = studentId;
-	}
-	
+    
 }
