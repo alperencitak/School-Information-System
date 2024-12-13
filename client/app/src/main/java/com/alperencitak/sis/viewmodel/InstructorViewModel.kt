@@ -27,4 +27,14 @@ class InstructorViewModel @Inject constructor(
             }
         }
     }
+
+    fun getInstructorByEmail(email: String){
+        viewModelScope.launch {
+            try {
+                _instructor.value = instructorRepository.getInstructorByEmail(email)
+            }catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.alperencitak.sis.ui.theme.SisTheme
-import com.alperencitak.sis.view.InstructorScreen
+import com.alperencitak.sis.view.LoginInstructorScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SisTheme {
-                InstructorScreen()
+                LoginInstructorScreen()
             }
         }
     }

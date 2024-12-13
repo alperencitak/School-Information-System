@@ -33,20 +33,20 @@ fun InstructorScreen(){
     val instructorViewModel: InstructorViewModel = remember { InstructorViewModel(InstructorRepository()) }
     val instructor by instructorViewModel.instructor.collectAsState()
 
-    var id by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Row(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
             TextField(
-                value = id,
-                onValueChange = { id = it },
+                value = email,
+                onValueChange = { email = it },
                 modifier = Modifier.weight(1f),
-                label = { Text("Instructor ID") }
+                label = { Text("Instructor Email") }
             )
             Spacer(modifier = Modifier.width(8.dp))
         }
         Button(onClick = {
-            instructorViewModel.getInstructorById(id.toInt())
+            instructorViewModel.getInstructorByEmail(email)
         }) {
             Text("Get Instructor")
         }

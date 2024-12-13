@@ -20,4 +20,8 @@ class InstructorRepository @Inject constructor() {
     suspend fun getInstructorById(id: Int): Instructor {
         return client.get("http://10.0.2.2:8080/instructors/$id").body()
     }
+
+    suspend fun getInstructorByEmail(email: String): Instructor {
+        return client.get("http://10.0.2.2:8080/instructors/email/$email").body()
+    }
 }
