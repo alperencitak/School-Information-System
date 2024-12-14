@@ -35,12 +35,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.alperencitak.sis.R
 import com.alperencitak.sis.repository.UserStudentRepository
 import com.alperencitak.sis.viewmodel.UserStudentViewModel
 
 @Composable
-fun LoginStudentScreen() {
+fun LoginStudentScreen(navController: NavController) {
     val userStudentViewModel: UserStudentViewModel = remember {
         UserStudentViewModel(UserStudentRepository())
     }

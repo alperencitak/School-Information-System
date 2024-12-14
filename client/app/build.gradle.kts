@@ -51,7 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -62,19 +62,24 @@ dependencies {
 
     // Ktor
 
-    implementation("io.ktor:ktor-client-core:2.3.0")
-    implementation("io.ktor:ktor-client-cio:2.3.0")
-    implementation("io.ktor:ktor-client-content-negotiation:2.3.0")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.0")
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
 
     // Kotlinx Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation(libs.kotlinx.serialization.json)
+
+
+    // Navigation
+
+    implementation(libs.androidx.navigation.compose)
 
     // Coroutines
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }
