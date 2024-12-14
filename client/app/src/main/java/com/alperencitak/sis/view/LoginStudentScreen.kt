@@ -1,7 +1,6 @@
 package com.alperencitak.sis.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,20 +9,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -35,30 +27,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alperencitak.sis.R
-import com.alperencitak.sis.repository.UserInstructorRepository
-import com.alperencitak.sis.ui.theme.LightBlueWhite
-import com.alperencitak.sis.viewmodel.UserInstructorViewModel
+import com.alperencitak.sis.repository.UserStudentRepository
+import com.alperencitak.sis.viewmodel.UserStudentViewModel
 
 @Composable
-fun LoginInstructorScreen() {
-    val userInstructorViewModel: UserInstructorViewModel = remember {
-        UserInstructorViewModel(UserInstructorRepository())
+fun LoginStudentScreen() {
+    val userStudentViewModel: UserStudentViewModel = remember {
+        UserStudentViewModel(UserStudentRepository())
     }
-    val userInstructor by userInstructorViewModel.userInstructor.collectAsState()
-    val isLoading by userInstructorViewModel.loading.collectAsState()
+    val userStudent by userStudentViewModel.userStudent.collectAsState()
+    val isLoading by userStudentViewModel.loading.collectAsState()
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -81,13 +68,13 @@ fun LoginInstructorScreen() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "INSTRUCTOR LOGIN",
+                text = "STUDENT LOGIN",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp
             )
             Box(modifier = Modifier.height(256.dp).width(196.dp)){
                 Image(
-                    painter = painterResource(id = R.drawable.removebgteacher),
+                    painter = painterResource(id = R.drawable.removebgstudent),
                     contentDescription = "Teacher Icon",
                     modifier = Modifier.matchParentSize(),
                     contentScale = ContentScale.FillBounds
@@ -127,16 +114,16 @@ fun LoginInstructorScreen() {
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
                 onClick = {
                     if(username.isNotEmpty() && password.isNotEmpty()){
-                        userInstructorViewModel.login(username, password)
+                        userStudentViewModel.login(username, password)
+                    }
                 }
-            }
             ) { Text(text = if (isLoading) "LOADING..." else "LOGIN") }
 
-            if (userInstructor != null) {
-                text = "Id: ${userInstructor!!.userId}\n" +
-                        "Username: ${userInstructor!!.username}\n" +
-                        "Role: ${userInstructor!!.role}\n" +
-                        "InstructorId: ${userInstructor!!.instructorId}"
+            if (userStudent != null) {
+                text = "Id: ${userStudent!!.userId}\n" +
+                        "Username: ${userStudent!!.username}\n" +
+                        "Role: ${userStudent!!.role}\n" +
+                        "InstructorId: ${userStudent!!.studentId}"
             }
 
             Spacer(modifier = Modifier.height(16.dp))
