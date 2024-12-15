@@ -9,7 +9,7 @@ public class StudentDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private String instructorId;
+    private Integer instructorId;
     private LocalDate enrollmentDate;
     private Set<SelectedLessonDTO> selections;
     private UserStudentDTO userStudent;
@@ -50,10 +50,10 @@ public class StudentDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getInstructorId() {
+	public Integer getInstructorId() {
 		return instructorId;
 	}
-	public void setInstructorId(String instructorId) {
+	public void setInstructorId(Integer instructorId) {
 		this.instructorId = instructorId;
 	}
 	public LocalDate getEnrollmentDate() {
