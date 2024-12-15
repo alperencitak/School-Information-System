@@ -18,12 +18,18 @@ class InstructorViewModel @Inject constructor(
     private val _instructor = MutableStateFlow<Instructor?>(null)
     val instructor: StateFlow<Instructor?> = _instructor
 
+    private val _loading = MutableStateFlow(false)
+    val loading: StateFlow<Boolean> = _loading
+
     fun getInstructorById(id: Int){
         viewModelScope.launch {
             try {
+                _loading.value = true
                 _instructor.value = instructorRepository.getInstructorById(id)
             }catch (e: Exception) {
                 e.printStackTrace()
+            }finally {
+                _loading.value = false
             }
         }
     }
@@ -31,9 +37,12 @@ class InstructorViewModel @Inject constructor(
     fun getInstructorByEmail(email: String){
         viewModelScope.launch {
             try {
+                _loading.value = true
                 _instructor.value = instructorRepository.getInstructorByEmail(email)
             }catch (e: Exception) {
                 e.printStackTrace()
+            }finally {
+                _loading.value = false
             }
         }
     }

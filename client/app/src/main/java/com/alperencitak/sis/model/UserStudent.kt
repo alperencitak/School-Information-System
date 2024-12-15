@@ -7,5 +7,5 @@ data class UserStudent(
     val userId: Int,
     val username : String,
     val role : String,
-    val studentId : Int
+    val studentId : Int?
 )
