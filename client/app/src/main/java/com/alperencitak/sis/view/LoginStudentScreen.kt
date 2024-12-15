@@ -50,7 +50,6 @@ fun LoginStudentScreen(navController: NavController) {
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var text by remember { mutableStateOf("") }
 
     Surface{
         Box(modifier = Modifier.fillMaxSize()){
@@ -119,16 +118,9 @@ fun LoginStudentScreen(navController: NavController) {
                     }
                 }
             ) { Text(text = if (isLoading) "LOADING..." else "LOGIN") }
-
-            if (userStudent != null) {
-                text = "Id: ${userStudent!!.userId}\n" +
-                        "Username: ${userStudent!!.username}\n" +
-                        "Role: ${userStudent!!.role}\n" +
-                        "InstructorId: ${userStudent!!.studentId}"
+            if(userStudent != null){
+                navController.navigate("main/student/${userStudent!!.studentId}")
             }
-
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = text)
         }
     }
 }

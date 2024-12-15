@@ -50,7 +50,6 @@ fun LoginInstructorScreen(navController: NavController) {
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var text by remember { mutableStateOf("") }
 
     Surface{
         Box(modifier = Modifier.fillMaxSize()){
@@ -116,19 +115,13 @@ fun LoginInstructorScreen(navController: NavController) {
                 onClick = {
                     if(username.isNotEmpty() && password.isNotEmpty()){
                         userInstructorViewModel.login(username, password)
-                }
+                    }
             }
             ) { Text(text = if (isLoading) "LOADING..." else "LOGIN") }
 
-            if (userInstructor != null) {
-                text = "Id: ${userInstructor!!.userId}\n" +
-                        "Username: ${userInstructor!!.username}\n" +
-                        "Role: ${userInstructor!!.role}\n" +
-                        "InstructorId: ${userInstructor!!.instructorId}"
+            if(userInstructor != null){
+                navController.navigate("main/instructor/${userInstructor!!.instructorId}")
             }
-
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = text)
         }
     }
 }
