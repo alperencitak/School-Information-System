@@ -10,10 +10,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.alperencitak.sis.ui.theme.SisTheme
+import com.alperencitak.sis.view.LessonSelectionScreen
 import com.alperencitak.sis.view.LoginInstructorScreen
 import com.alperencitak.sis.view.LoginScreen
 import com.alperencitak.sis.view.LoginStudentScreen
 import com.alperencitak.sis.view.MainScreen
+import com.alperencitak.sis.view.StudentTranscriptScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +43,25 @@ class MainActivity : ComponentActivity() {
                     ){ navBackStackEntry ->
                         val role = navBackStackEntry.arguments?.getString("role") ?: ""
                         val relatedId = navBackStackEntry.arguments?.getInt("relatedId") ?: 0
-                        MainScreen(role, relatedId)
+                        MainScreen(role, relatedId, navController)
+                    }
+                    composable(
+                        route = "transcript/{studentId}",
+                        arguments = listOf(navArgument("studentId"){ type = NavType.IntType })
+                    ) { navBackStackEntry ->
+                        val studentId = navBackStackEntry.arguments?.getInt("studentId") ?: 0
+                        StudentTranscriptScreen(studentId)
+                    }
+                    composable(
+                        route = "lessonselection/{department}/{studentId}",
+                        arguments = listOf(
+                            navArgument("department"){ type = NavType.StringType },
+                            navArgument("studentId"){ type = NavType.IntType }
+                        )
+                    ) { navBackStackEntry ->
+                        val department = navBackStackEntry.arguments?.getString("department") ?: ""
+                        val studentId = navBackStackEntry.arguments?.getInt("studentId") ?: 0
+                        LessonSelectionScreen(department, studentId)
                     }
                 })
             }

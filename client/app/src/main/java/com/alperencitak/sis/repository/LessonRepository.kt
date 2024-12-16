@@ -23,4 +23,8 @@ class LessonRepository {
     suspend fun getLessonByCode(code: Int) : Lesson {
         return client.get("http://10.0.2.2:8080/lessons/code/$code").body()
     }
+
+    suspend fun getAllLessons() : List<Lesson> {
+        return client.get("http://10.0.2.2:8080/lessons").body()
+    }
 }

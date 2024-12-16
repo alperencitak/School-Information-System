@@ -14,30 +14,22 @@ import javax.inject.Inject
 class LessonViewModel @Inject constructor(
     private val lessonRepository: LessonRepository
 ) : ViewModel() {
-    private val _lesson = MutableStateFlow<Lesson?>(null)
-    val lesson: StateFlow<Lesson?> = _lesson
+
+    private val _lessons = MutableStateFlow<List<Lesson>>(emptyList())
+    val lessons: StateFlow<List<Lesson>> = _lessons
 
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading
 
-    fun getLessonById(id: Int){
-        viewModelScope.launch {
-            try {
-                _loading.value = true
-                _lesson.value = lessonRepository.getLessonById(id)
-            }catch (e: Exception){
-                e.printStackTrace()
-            }finally {
-                _loading.value = false
-            }
-        }
+    init {
+        getLessons()
     }
 
-    fun getLessonByCode(code: Int){
+    fun getLessons(){
         viewModelScope.launch {
             try {
                 _loading.value = true
-                _lesson.value = lessonRepository.getLessonByCode(code)
+                _lessons.value = lessonRepository.getAllLessons()
             }catch (e: Exception){
                 e.printStackTrace()
             }finally {

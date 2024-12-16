@@ -10,6 +10,6 @@ data class Lesson (
     val isMandatory: Boolean,
     val credit: Int,
     val department: String,
-    val selections: SelectedLesson,
+    val selections: List<SelectedLesson>,
     val quota: Int
 )

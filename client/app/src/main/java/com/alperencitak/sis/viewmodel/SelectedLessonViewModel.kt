@@ -78,11 +78,14 @@ class SelectedLessonViewModel @Inject constructor(
         }
     }
 
-    fun addSelection(selectedLesson: SelectedLesson){
+    fun addSelections(selectedLessons: List<SelectedLesson>){
         viewModelScope.launch {
             try {
                 _loading.value = true
-                _selection.value = selectedLessonRepository.addSelection(selectedLesson)
+                selectedLessons.forEach { selectedLesson ->
+                    selectedLessonRepository.addSelection(selectedLesson)
+                }
+                _selectionsByStudent.value = selectedLessons
             }catch (e: Exception){
                 e.printStackTrace()
             }finally {

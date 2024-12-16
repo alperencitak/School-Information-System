@@ -32,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.alperencitak.sis.R
 import com.alperencitak.sis.repository.InstructorRepository
 import com.alperencitak.sis.repository.StudentRepository
@@ -40,12 +41,17 @@ import com.alperencitak.sis.viewmodel.InstructorViewModel
 import com.alperencitak.sis.viewmodel.StudentViewModel
 
 @Composable
-fun MainScreen(role: String, relatedId: Int) {
+fun MainScreen(role: String, relatedId: Int, navController: NavController) {
     if(role == "student"){
 
         val studentViewModel = remember { StudentViewModel(StudentRepository()) }
+        val instructorViewModel = remember { InstructorViewModel(InstructorRepository()) }
         val student by studentViewModel.student.collectAsState()
+        val instructor by instructorViewModel.instructor.collectAsState()
         studentViewModel.getStudentById(relatedId)
+        if(student!=null){
+            instructorViewModel.getInstructorById(student!!.instructorId)
+        }
 
         var studentId by remember { mutableStateOf("") }
         var fullName by remember { mutableStateOf("") }
@@ -131,16 +137,24 @@ fun MainScreen(role: String, relatedId: Int) {
                 Spacer(modifier = Modifier.height(128.dp))
                 ElevatedCardComp(
                     onClick = {
-
+                        navController.navigate("transcript/${studentId}")
                     },
                     text = "TRANSCRIPT"
                 )
                 Spacer(modifier = Modifier.height(32.dp))
                 ElevatedCardComp(
                     onClick = {
-
+                        if(student != null){
+                            if(instructor!=null){
+                                navController.navigate("lessonselection/${instructor!!.department}/${studentId}")
+                            }else{
+                                println("instructor null")
+                            }
+                        }else{
+                            println("student null")
+                        }
                     },
-                    text = "INFORMATIONS"
+                    text = "LESSON SELECTION"
                 )
             }
         }
