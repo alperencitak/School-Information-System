@@ -1,5 +1,8 @@
 package com.alperencitak.sis.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.alperencitak.sis.dto.LessonDTO;
@@ -30,6 +33,12 @@ public class LessonService {
 	public LessonDTO getByLessonCode(String code) {
 		return lessonMapper.toLessonDTO(lessonRepository.findLessonByLessonCode(code)
 				.orElseThrow(() -> new NotFoundException("Lesson not found by lesson code: " + code)));
+	}
+	
+	public List<LessonDTO> getAllLessons(){
+		return lessonRepository.findAll().stream()
+				.map(lessonMapper::toLessonDTO)
+				.collect(Collectors.toList());
 	}
 
 	public void deleteById(Integer id) {

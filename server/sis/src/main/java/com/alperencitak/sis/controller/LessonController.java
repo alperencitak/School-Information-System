@@ -1,5 +1,7 @@
 package com.alperencitak.sis.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,12 @@ public class LessonController {
 	public LessonController(LessonService lessonService) {
 		this.lessonService = lessonService;
 	}
-
+	
+	@GetMapping
+	ResponseEntity<List<LessonDTO>> getAllLessons(){
+		return ResponseEntity.ok(lessonService.getAllLessons());
+	}
+	
 	@GetMapping("/{id}")
 	ResponseEntity<LessonDTO> getLessonById(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(lessonService.getById(id));
