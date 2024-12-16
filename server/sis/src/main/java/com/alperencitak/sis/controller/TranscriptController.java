@@ -1,5 +1,7 @@
 package com.alperencitak.sis.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,12 +30,12 @@ public class TranscriptController {
 	}
 
 	@GetMapping("/student/{id}")
-	ResponseEntity<TranscriptDTO> getTranscriptByStudentId(@PathVariable("id") Integer id){
+	ResponseEntity<List<TranscriptDTO>> getTranscriptsByStudentId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(transcriptService.getByStudentId(id));
 	}
 
 	@GetMapping("/lesson/{id}")
-	ResponseEntity<TranscriptDTO> getTranscriptByLessonId(@PathVariable("id") Integer id){
+	ResponseEntity<List<TranscriptDTO>> getTranscriptsByLessonId(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(transcriptService.getByLessonId(id));
 	}
 

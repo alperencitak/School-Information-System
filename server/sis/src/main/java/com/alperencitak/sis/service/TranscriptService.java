@@ -1,5 +1,8 @@
 package com.alperencitak.sis.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.alperencitak.sis.dto.TranscriptDTO;
@@ -24,14 +27,16 @@ public class TranscriptService {
 				.orElseThrow(() -> new NotFoundException("Transcript not found by id: " + id)));
 	}
 
-	public TranscriptDTO getByStudentId(Integer id) {
-		return transcriptMapper.toTranscriptDTO(transcriptRepository.findByStudent_StudentId(id)
-				.orElseThrow(() -> new NotFoundException("Transcript not found by student id: " + id)));
+	public List<TranscriptDTO> getByStudentId(Integer id) {
+		return transcriptRepository.findByStudent_StudentId(id).stream()
+				.map(transcriptMapper::toTranscriptDTO)
+				.collect(Collectors.toList());
 	}
 
-	public TranscriptDTO getByLessonId(Integer id) {
-		return transcriptMapper.toTranscriptDTO(transcriptRepository.findByLesson_LessonId(id)
-				.orElseThrow(() -> new NotFoundException("Transcript not found by lesson id: " + id)));
+	public List<TranscriptDTO> getByLessonId(Integer id) {
+		return transcriptRepository.findByLesson_LessonId(id).stream()
+				.map(transcriptMapper::toTranscriptDTO)
+				.collect(Collectors.toList());
 	}
 
 	public void deleteById(Integer id) {
