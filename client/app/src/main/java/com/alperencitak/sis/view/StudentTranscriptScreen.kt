@@ -60,22 +60,22 @@ fun StudentTranscriptScreen(studentId: Int) {
                 contentScale = ContentScale.Crop
             )
         }
-        Box(
-            modifier = Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = "TRANSCRIPT",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.align(Alignment.Center).padding(top = 64.dp)
-            )
-        }
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center
         ) {
-            LazyColumn{
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ){
+                Text(
+                    text = "TRANSCRIPT",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.align(Alignment.Center).padding(top = 32.dp)
+                )
+            }
+            LazyColumn(modifier = Modifier.weight(1f).padding(vertical = 56.dp)){
                 itemsIndexed(selectedLessons){ _, selectedLesson ->
                     val lesson = lessons.find { it.lessonId == selectedLesson.lessonId }
                     if(lesson != null && selectedLesson.isApproved){
