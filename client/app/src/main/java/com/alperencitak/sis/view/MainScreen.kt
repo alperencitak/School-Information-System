@@ -259,13 +259,6 @@ fun MainScreen(role: String, relatedId: Int, navController: NavController) {
                     },
                     text = "LESSON APPROVAL"
                 )
-                Spacer(modifier = Modifier.height(16.dp))
-                ElevatedCardComp(
-                    onClick = {
-
-                    },
-                    text = "INFORMATIONS"
-                )
             }
         }
         if(instructor != null){
