@@ -30,9 +30,9 @@ Technology Stack
 - Spring Boot: Application framework.
 - MySQL: Database management system.
 - Maven: Project management tool.
-  
+  ![database2](https://github.com/user-attachments/assets/ddf7bd4e-894a-49ed-994c-774214300e4d)
 ![database](https://github.com/user-attachments/assets/910bfc66-8b88-4b87-89d0-457928ca063b)
-![database2](https://github.com/user-attachments/assets/ddf7bd4e-894a-49ed-994c-774214300e4d)
+
 ![api](https://github.com/user-attachments/assets/eec6f6c8-9132-44b4-b4f9-ad01480d7284)
 ![api2](https://github.com/user-attachments/assets/b50c7184-7933-4427-b633-50b0c1dba247)
 
