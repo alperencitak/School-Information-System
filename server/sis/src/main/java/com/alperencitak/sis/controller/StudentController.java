@@ -1,5 +1,7 @@
 package com.alperencitak.sis.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,12 @@ public class StudentController {
 	ResponseEntity<StudentDTO> getStudentByEmail(@PathVariable("email") String email){
 		return ResponseEntity.ok(studentService.getByEmail(email));
 	}
-
+	
+	@GetMapping("/instructor/{id}")
+	ResponseEntity<List<StudentDTO>> getStudentsByInstructorId(@PathVariable("id") Integer id){
+		return ResponseEntity.ok(studentService.getByInstructorId(id));
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<Void> deleteStudentById(@PathVariable("id") Integer id){
 		studentService.deleteById(id);

@@ -1,5 +1,8 @@
 package com.alperencitak.sis.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.alperencitak.sis.dto.StudentDTO;
@@ -27,6 +30,12 @@ public class StudentService {
 	public StudentDTO getByEmail(String email) {
 		return studentMapper.toStudentDTO(studentRepository.findByEmail(email)
 				.orElseThrow(() -> new NotFoundException("Student not found by email: " + email)));
+	}
+	
+	public List<StudentDTO> getByInstructorId(Integer id){
+		return studentRepository.findByInstructor_InstructorId(id).stream()
+				.map(studentMapper::toStudentDTO)
+				.collect(Collectors.toList());
 	}
 
 	public void deleteById(Integer id) {
