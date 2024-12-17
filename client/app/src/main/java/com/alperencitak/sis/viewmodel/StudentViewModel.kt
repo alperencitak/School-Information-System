@@ -15,6 +15,9 @@ class StudentViewModel @Inject constructor(
     private val studentRepository: StudentRepository
 ) : ViewModel(){
 
+    private val _students = MutableStateFlow<List<Student>>(emptyList())
+    val students: StateFlow<List<Student>> = _students
+
     private val _student = MutableStateFlow<Student?>(null)
     val student: StateFlow<Student?> = _student
 
@@ -26,6 +29,19 @@ class StudentViewModel @Inject constructor(
             try {
                 _loading.value = true
                 _student.value = studentRepository.getStudentById(id)
+            }catch (e: Exception){
+                e.printStackTrace()
+            }finally {
+                _loading.value = false
+            }
+        }
+    }
+
+    fun getStudentsByInstructorId(id: Int){
+        viewModelScope.launch {
+            try {
+                _loading.value = true
+                _students.value = studentRepository.getStudentsByInstructorId(id)
             }catch (e: Exception){
                 e.printStackTrace()
             }finally {

@@ -20,4 +20,9 @@ class StudentRepository @Inject constructor() {
     suspend fun getStudentById(id: Int): Student {
         return client.get("http://10.0.2.2:8080/students/$id").body()
     }
+
+    suspend fun getStudentsByInstructorId(id: Int) : List<Student> {
+        return client.get("http://10.0.2.2:8080/students/instructor/$id").body()
+    }
+
 }

@@ -253,9 +253,11 @@ fun MainScreen(role: String, relatedId: Int, navController: NavController) {
                 Spacer(modifier = Modifier.height(128.dp))
                 ElevatedCardComp(
                     onClick = {
-
+                        if(instructor != null){
+                            navController.navigate("lessonapproval/${instructor!!.instructorId}")
+                        }
                     },
-                    text = "STUDENTS"
+                    text = "LESSON APPROVAL"
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 ElevatedCardComp(

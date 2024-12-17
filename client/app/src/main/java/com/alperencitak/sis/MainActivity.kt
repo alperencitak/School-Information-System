@@ -1,15 +1,18 @@
 package com.alperencitak.sis
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.alperencitak.sis.ui.theme.SisTheme
+import com.alperencitak.sis.view.LessonApprovalScreen
 import com.alperencitak.sis.view.LessonSelectionScreen
 import com.alperencitak.sis.view.LoginInstructorScreen
 import com.alperencitak.sis.view.LoginScreen
@@ -18,6 +21,7 @@ import com.alperencitak.sis.view.MainScreen
 import com.alperencitak.sis.view.StudentTranscriptScreen
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,6 +66,15 @@ class MainActivity : ComponentActivity() {
                         val department = navBackStackEntry.arguments?.getString("department") ?: ""
                         val studentId = navBackStackEntry.arguments?.getInt("studentId") ?: 0
                         LessonSelectionScreen(department, studentId)
+                    }
+                    composable(
+                        route = "lessonapproval/{instructorId}",
+                        arguments = listOf(
+                            navArgument("instructorId"){ type = NavType.IntType }
+                        )
+                    ) { navBackStackEntry ->
+                        val instructorId = navBackStackEntry.arguments?.getInt("instructorId") ?: 0
+                        LessonApprovalScreen(instructorId)
                     }
                 })
             }
